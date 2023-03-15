@@ -14,4 +14,4 @@ class TeacherInfo(models.Model):
     contact_number = models.CharField(max_length=12)
     enrolled_date = models.DateField(auto_now=True)
     started_date = models.DateField(auto_now=True)
-    class_ = models.ForeignKey(ClassInfo)
+    class_info = models.ForeignKey(ClassInfo, on_delete=models.DO_NOTHING)

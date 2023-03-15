@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'StudentInfoHandler',
     'TeacherInfoHandler',
-    'GuardianInfoHandler'
+    'GuardianInfoHandler',
+    'EDUInfoHandler'
 ]
 
 MIDDLEWARE = [
