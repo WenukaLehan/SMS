@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* style for form */
+        form {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background-color: #f1f1f1;
+        }
+
+        /* style for labels */
+        label {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* style for text inputs */
+        input[type=text],
+        input[type=email] {
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* style for password input */
+        input[type=password] {
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* style for checkboxes */
+        input[type=checkbox] {
+            margin: 10px 0;
+        }
+
+        /* style for select */
+        select {
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* style for buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        #guardian {
+            display: var(--height);
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="/student/add/" method="post">
+        {% csrf_token %}
+        <h2>Student</h2>
+        {{ student_form_data }}
+
+        <h2>Parent/Gurdian</h2>
+        Already Registered : <input type="checkbox" id="new"><br>
+        <label>Guardian ID :</label> <input type="text" id="guardian_id" name="guardian_id" ><br>
+        <div id="guardian">
+            {{ guardian_form_data }}
+        </div>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+<script>
+    var r = document.querySelector(':root')
+    const value = document.getElementById('new');
+    const guardian_id = document.getElementById('guardian_id');
+    value.addEventListener('change', (event) => {
+        if (event.currentTarget.checked) {
+            const inputs = document.getElementById('guardian').querySelectorAll('input,textarea')
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].disabled = true;
+            }
+            guardian_id.disabled = false;
+            r.style.setProperty('--height', 'none')
+        } else {
+            const inputs = document.getElementById('guardian').getElementsByTagName('input')
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].disabled = false;
+            }
+            guardian_id.disabled = true;
+            r.style.setProperty('--height', 'inline')
+
+        }
+    })
+</script>
+
+</html>

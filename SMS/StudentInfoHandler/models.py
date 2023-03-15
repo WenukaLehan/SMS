@@ -21,8 +21,8 @@ class StudentInfo(models.Model):
 class ParentInfo(models.Model):
     student_index_number = models.ForeignKey(StudentInfo, on_delete=models.CASCADE)
     mother_name = models.CharField(max_length=255)
-    mother_status = models.BooleanField(default=True) # For death this will become True
+    mother_status = models.CharField(max_length=10) 
     mother_special_notes = models.JSONField()
     father_name = models.CharField(max_length=255)
-    father_status = models.BooleanField(default=True) # For death this will become True
+    father_status = models.CharField(max_length=10)
     father_special_notes = models.JSONField()
